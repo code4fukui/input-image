@@ -3,8 +3,15 @@ import { ImageUploader } from "https://js.sabae.cc/ImageUploader.js";
 import { uploadFile } from "https://js.sabae.cc/uploadFile.js";
 
 class InputImage extends HTMLElement {
-  constructor() {
+  constructor(opts) {
     super();
+    if (opts) {
+      for (const name in opts) {
+        if (opts[name] != null) {
+          this.setAttribute(name, opts[name]);
+        }
+      }
+    }
 
     const name = this.getAttribute("name");
     const accept = this.getAttribute("accept");
