@@ -1,0 +1,13 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width">
+
+<script type="module" src="./input-image.js"></script>
+<input-image id=image uploadurl="http://127.0.0.1:8881/data/"></input-image>
+
+<button id=btnget>get</button>
+<textarea id=res></textarea>
+
+<script type="module">
+btnget.onclick = () => {
+  res.value = image.value;
+};
+</script>
