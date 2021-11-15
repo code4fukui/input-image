@@ -1,5 +1,5 @@
-import { ImageUploader } from "https://js.sabae.cc/ImageUploader.js";
-//import { ImageUploader } from "./ImageUploader.js";
+//import { ImageUploader } from "https://js.sabae.cc/ImageUploader.js";
+import { ImageUploader } from "./ImageUploader.js";
 import { uploadFile } from "https://js.sabae.cc/uploadFile.js";
 
 class InputImage extends HTMLElement {
@@ -38,7 +38,6 @@ class InputImage extends HTMLElement {
       const uploadurl = this.getAttribute("uploadurl");
       const maxwidth = this.getAttribute("maxwidth") || 1220;
       const maxsize = this.getAttribute("maxsize") || "3MB";
-      console.log("uploadurl", uploadurl);
 
       if (!multiple) {
         while (this.imgc.firstElementChild) {

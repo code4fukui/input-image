@@ -21,6 +21,7 @@ class ImageUploader extends HTMLElement {
     c.style.padding = "5px";
     const tf = document.createElement("input");
     tf.type = "text";
+    tf.disabled = true;
     this.appendChild(tf);
     tf.value = null; // "https://url ...";
     tf.style.position = "relative";
