@@ -31,6 +31,14 @@ class InputImage extends HTMLElement {
     inp2.type = "hidden";
     inp2.name = name;
 
+    const imgrm = document.createElement("button");
+    imgrm.textContent = "削除";
+    this.appendChild(imgrm);
+    imgrm.onclick = () => {
+      inp.value = "";
+      inp.onchange();
+    };
+
     const imgc = document.createElement("div");
     this.imgc = imgc;
     this.appendChild(imgc);
@@ -43,6 +51,9 @@ class InputImage extends HTMLElement {
         while (this.imgc.firstElementChild) {
           this.imgc.removeChild(this.imgc.firstElementChild);
         }
+      }
+      if (!e) {
+        return;
       }
       const files = [];
       for (const file of e.target.files) {
@@ -111,6 +122,7 @@ class InputImage extends HTMLElement {
     }
   }
 }
+
 customElements.define("input-image", InputImage);
 
 export { InputImage };
