@@ -47,38 +47,27 @@ imgutil.resizeImage = async (img, mimeType, maxw) => {
   if (Math.max(iw, ih) < maxw) {
     return img;
   }
-  console.log(1)
   const [dw, dh] = iw > ih ? [maxw, maxw / iw * ih] : [maxw / ih * iw, maxw];
   const canvas = document.createElement("canvas");
   canvas.width = dw;
   canvas.height = dh;
   const g = canvas.getContext("2d");
-  console.log(2)
   g.drawImage(img, 0, 0, iw, ih, 0, 0, dw, dh);
-  console.log(mimeType, iw, ih, dw, dh)
+  //console.log(mimeType, iw, ih, dw, dh)
   const dataurl = canvas.toDataURL(mimeType);
   const img2 = new Image();
-  console.log(3)
   img2.src = dataurl;
-  console.log(img2)
   await imgutil.waitImageLoad(img2);
-  console.log(4)
   return img2;
 };
 
 imgutil.loadResizedImage = async (file, maxw, maxsize) => {
-  console.log(file, maxw, maxsize);
   const img = new Image();
-  console.log(file)
   img.src = URL.createObjectURL(file);
-  console.log(img.src)
   await imgutil.waitImageLoad(img);
-  console.log(file.size)
   if (file.type.indexOf("svg") >= 0 && file.size <= parseSize(maxsize)) {
-    console.log("just");
     return img;
   }
-  console.log("resi");
   const res = await imgutil.resizeImage(img, file.type, maxw);
   return res;
 };
